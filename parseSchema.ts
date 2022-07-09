@@ -1,6 +1,3 @@
-export const parseSchema = <T>(schema: string): T => {
+export const parseSchema = (schema: string): unknown => {
   return undefined as any;
 }
-
-console.clear();
-console.log(parseSchema('{a: string[]}'));
