@@ -19,7 +19,7 @@ Deno.test("String array", () => {
 
 Deno.test("Type test", () => {
   try {
-    const response = parseSchema<string[]>('string[10]')
+    const response = parseSchema<string[]>('string[]|10')
     const validateSchema = z.array(z.string()).length(10);
 
     validateSchema.parse(response);
@@ -30,7 +30,7 @@ Deno.test("Type test", () => {
 
 Deno.test("String array with fixed length", () => {
   try {
-    const response = parseSchema<string[]>('string[10]')
+    const response = parseSchema<string[]>('string[]|10')
     const validateSchema = z.array(z.string()).length(10);
 
     validateSchema.parse(response);
@@ -51,7 +51,7 @@ Deno.test("String", () => {
 
 Deno.test("String with fixed length", () => {
   try {
-    const response = parseSchema<string>('strin10g')
+    const response = parseSchema<string>('string|10')
     const validateSchema = z.string().length(10);
     validateSchema.parse(response);
   } catch (error) {
@@ -60,7 +60,7 @@ Deno.test("String with fixed length", () => {
 });
 Deno.test("Any array with fixed length", () => {
   try {
-    const response = parseSchema<any[]>('any[10]')
+    const response = parseSchema<any[]>('any[]|10')
     const validateSchema = z.array(z.any()).length(10);
     validateSchema.parse(response);
   } catch (error) {
@@ -96,7 +96,7 @@ Deno.test("Any", () => {
 });
 Deno.test("Boolean array with fixed length", () => {
   try {
-    const response = parseSchema<boolean[]>('boolean[10]')
+    const response = parseSchema<boolean[]>('boolean[]|10')
     const validateSchema = z.array(z.boolean()).length(10);
     validateSchema.parse(response);
   } catch (error) {
@@ -124,7 +124,7 @@ Deno.test("Boolean", () => {
 
 Deno.test("Number array with fixed length", () => {
   try {
-    const response = parseSchema<number[]>('number[10]')
+    const response = parseSchema<number[]>('number[]|10')
     const validateSchema = z.array(z.number()).length(10);
     validateSchema.parse(response);
   } catch (error) {
@@ -179,7 +179,7 @@ Deno.test("Custom typed array", () => {
 });
 Deno.test("Custom typed array with fixed length", () => {
   try {
-    const response = parseSchema<{x: number, y: number, name: string}[]>('{x: number, y: number, name: string}[10]')
+    const response = parseSchema<{x: number, y: number, name: string}[]>('{x: number, y: number, name: string}[]|10')
     const validateSchema = z.array(z.object({
       x: z.number(),
       y: z.number(),
